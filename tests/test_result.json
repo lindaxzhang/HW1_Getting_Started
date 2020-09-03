@@ -1,0 +1,10 @@
+{
+    "test_indexing_aggregation": false,
+    "test_create_add_matrix": false,
+    "test_sum_numbers": false,
+    "test_multiply_numbers": false,
+    "test_netid": true,
+    "test_load_image": false,
+    "test_crop_chicago": false,
+    "test_rgb_to_gray": false
+}
