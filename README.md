@@ -17,6 +17,8 @@ In this assignment, the goals are:
 
 First, let's clone this repository. We'll use `git` for all submissions in this class. New to `git`? Not to worry, it's quite easy! Here's a [helpful guide](https://guides.github.com/activities/hello-world/). 
 
+GIT can e.g. be installed through here: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
 To clone this repository install GIT on your computer and copy the link of the repository (find above at "Clone or Download") and enter in the command line:
 
 ``git clone YOUR-LINK``
