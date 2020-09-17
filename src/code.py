@@ -1,28 +1,6 @@
 import numpy as np
 from scipy import linalg
 
-savedir = 'Output'
-
-def save_fig_as_png(figtitle):
-    '''
-    Saves the current figure into the output folder
-    The figtitle should not contain the ".png".
-    This helper function shoudl be easy to use and should help you create the figures 
-    needed for the report
-    
-    The directory where images are saved are taken from savedir in "Code.py" 
-    and should be included in this function.
-    
-    Hint: The plt.gcf() might come in handy
-    Hint 2: read about this to crop white borders
-    https://stackoverflow.com/questions/8218608/scipy-savefig-without-frames-axes-only-content
-    
-    '''
-
-    raise NotImplementedError
-
-    
-
 def sum_numbers(x, y):
     """
     TODO: IMPLEMENT ME
@@ -36,7 +14,6 @@ def sum_numbers(x, y):
     """
     # replace the following line with an actual implementation that returns something
     raise NotImplementedError
-
 def multiply_numbers(x, y):
     """
     TODO: IMPLEMENT ME
@@ -51,7 +28,6 @@ def multiply_numbers(x, y):
     
     # replace the following line with an actual implementation that returns something
     raise NotImplementedError
-
 def create_add_matrix(x):
     """
     TODO: IMPLEMENT ME
@@ -66,6 +42,7 @@ def create_add_matrix(x):
     """
 
     # replace the following line with an actual implementation that returns something
+    
     raise NotImplementedError
     
 def indexing_aggregation(x, n):
@@ -81,7 +58,7 @@ def indexing_aggregation(x, n):
     """
     # replace the following line with an actual implementation that returns something
     raise NotImplementedError
-  
+    
 def matrix_inverse(A):
     """
     TODO: IMPLEMENT ME
@@ -95,6 +72,6 @@ def matrix_inverse(A):
         output (np.ndarray): the operation result
 
     """
-    # replace the following line with an actual implementation that returns something
-    raise NotImplementedError
-
+    
+    raise NotImplementedError    
+    #raise NotImplementedError()

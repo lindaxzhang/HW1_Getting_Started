@@ -5,18 +5,43 @@ import skimage.transform
 import cv2
 import matplotlib.pyplot as plt
 
+def save_fig_as_png(figtitle):
+    '''
+    Saves the current figure into the output folder
+    The figtitle should not contain the ".png".
+    This helper function shoudl be easy to use and should help you create the figures 
+    needed for the report
+    
+    The directory where images are saved are taken from savedir in "Code.py" 
+    and should be included in this function.
+    
+    Hint: The plt.gcf() might come in handy
+    Hint 2: read about this to crop white borders
+    https://stackoverflow.com/questions/8218608/scipy-savefig-without-frames-axes-only-content
+    
+    '''
+
+    raise NotImplementedError
+
+
 def load_image(path):
     """
     TODO: IMPLEMENT ME
     
-    Loads the nortwestern image which is save at "images/northwestern.jpg"
-    ps. the whole image should be divided by 255.
+    Loads an image specified by path.
+    
+    Specifications on the image:
+        1. Image should be returned with type float32 
+        2. Image should be scaled between 0 and 1
+        3. If the image has a transprancy channel, the output is a 4-channel array
+            a) You can test with the image "dog.png" which has an alpha channel
 
     Args:
-        path()
+        path: path to the file
     Returns:
-        output (np.ndarray): The northwesten image as an RGB image
+        output (np.ndarray): The northwesten image as an RGB image (or RGB alpha if 4 channel image)
     """
+    
     raise NotImplementedError
 
 def crop_chicago_from_northwestern(img):
@@ -32,39 +57,29 @@ def crop_chicago_from_northwestern(img):
     Returns:
         output (np.ndarray): The skyline of chicago with size (250,1000,3)
     """
-    raise NotImplementedError
     
-
-def rescale(img,scale):
-    """
-    TODO: IMPLEMENT ME
-    
-    rescales an image; look into cv2.resize!
-
-    Args:
-        img (np.array): the image you want to rescale
-        scale(float): percent you want to scale
-    Returns:
-        resized(np.array): the resized image
-    """
-    raise NotImplementedError
-
+    raise NotImplementedError    
 def downsample_by_scale_factor(img,scale_factor):
     """
     TODO: IMPLEMENT ME
     
-    Downsample the input image img by a scaling factor
+    Downsample the input image img by a scaling factr
     
     E.g. with scale_factor = 2 and img.shape = (200,400)
     
     you would expect the output to be (100,200)
     
+    You can use external packages for downsampling. Just look 
+    for the right package
+
     Args:
         input (nd.array): The image of Northwestern and Chicago
     Returns:
         output (np.ndarray): The skyline of chicago with size (250,1000,3)
     """
+    
     raise NotImplementedError
+    
 
 
 
@@ -112,83 +127,64 @@ def plot_chicago_skyline(img):
     """
     raise NotImplementedError
 
+def rescale(img,scale):
+    """
+    TODO: IMPLEMENT ME
+    
+    Implement a function that scales an image according to the scale factor
+    defined by scale
 
-
-
-
+    """    
+    raise NotImplementedError
 
 def pad_image(img,pad_size):
     """
-
     TODO: IMPLEMENT ME
-
-    this gives the image some padding.
     
+    Takes an image and pads it symmetrically at all borders with
+    pad_size as the size of the padding
+
     Args:
-        img (np.ndarray): the image to be padded
-        pad_size (int): the amount of pixels to pad
+        img (np.ndarray): image to be padded
     Returns:
-        padded_img (np.ndarray): the padded image
-    """
+        output (np.ndarray): padded image
+    """    
     raise NotImplementedError
 
 def add_alpha_channel(img):
     """
-
     TODO: IMPLEMENT ME
-
-    this adds an additional channel, an alpha channel, which are all 1s.
-
+    
+    Takes an image with 3 channels and adds an alpha channel (4th channel) to it
+    Alpha channel should be initialize so that it is NOT transparent
+    
+    Think about what value this should be!
+    
     Args:
-        img (np.ndarray): image with 3 channels
-    output:
-        img (np.ndarray): the image with an additional alpha channel
-    """
-    raise NotImplementedError
-
-def overlay_two_images_of_same_size(img1,img2):
-    """
-
-    TODO: IMPLEMENT ME
-
-    this function overlays two images by using the alpha channels of the two images.
-
-    an approach for this function:
-        make a mask using the alpha channel of the foreground
-
-        because the background alpha values are 1s, use that with the fact that the foreground
-        image contains the outline of the object to change img1 and img2, and use the addition
-        of these two images as the overlay.
-
-    Args:
-        img1 (np.ndarray): this should be the background
-        img2 (np.ndarray): this should be the foreground/object 
-    """
-    raise NotImplementedError
-
-def overlay_two_images(img1,img2,location):
-    """
-
-    TODO: IMPLEMENT ME
-
-    this function should overlay these two images at the location signified. don't forget
-    to use the helper overlay_two_images_of_same_size. The process should look something like:
-        
-        taking a section of the background that you want from using location
-
-        use that image with the foreground image with the overlay_two_images_of_same_size function
-        to overlay, let's call this overlayed_img
-
-        make that section of the background = overlayed_img
-
-    Args:
-        img1 (nd.array): this image should be the background
-        img2 (nd.array): this image should be the foreground
-        location (nd.array): x,y coordinates of the top-left of the image you want to overlay
+        img (np.ndarray): rgb imagew without alpha channel
     Returns:
-        output (np.ndarray): The overlayed image
+        output (np.ndarray): rgb+depth image
     """    
     raise NotImplementedError
 
 
+def overlay_two_images_of_same_size(img1,img2):
+    raise NotImplementedError
     
+def overlay_two_images(img1,img2,location):
+    """
+    TODO: IMPLEMENT ME
+    
+    Crop a region-of-interest (ROI) from the big northwestern image that shows only Chicago
+    
+    The image size should be (250, 1000) and the the output should be an RGB numpy array
+    
+    Args:
+        img1 (nd.array): 
+        img2 (nd.array):
+        location (nd.array): x,y coordinates of the top-left of the image you want to overlay
+    Returns:
+        output (np.ndarray): The skyline of chicago with size (250,1000,3)
+    """    
+    
+    raise NotImplementedError

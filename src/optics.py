@@ -2,44 +2,54 @@ import numpy as np
 import scipy
 
 def create_radial_distance_map(N_img):
-    """
-
-    TODO: IMPLEMENT ME
-
-    create disk-like filter footprint with given radius
-
+    """  
+    This should create 2-Dimensional matrix which calculates
+    the radial distance from the center. I.e. the value 
+    in the center should be 0 and then the values increase
+    radial symmetric around the center.
+    
+    Helpful function are np.linspace, np.meshgrid
+    and the np.sqrt function
+    
+    You can use Pythagorean theorem to calculat the radial distances.
+    
     Args:
-        N_img (int): how big the image should be
-    Returns:
-        Radial_distance_map (np.ndarray): the disk-like filter, with given radius.
+        N_img: Number of pixels of the distance map
+    Return:
+        R (float): Radial distance map as 2D array
     """
     raise NotImplementedError
 
 def gaussian_psf(R,sigma):
-    """
-    TODO: IMPLEMENT ME
+    """  
+    Gaussian PSFs creates a 2D matrix which follows
+    a Gaussian Point-spread-function.
     
-    finds the point spread function by calculating a convolutional
-    kernel which is guassian. This gives us the blur.
-
-    read more at:
+    Find more information on what a PSF is here:
     https://en.wikipedia.org/wiki/Point_spread_function
-
+    
+    Calculating this is quite simple and you don't
+    require any additional packages.
+    
+    Simply apply the gaussian function 
+    (https://en.wikipedia.org/wiki/Gaussian_function)
+    to your radial distance map.
+    
+    The only parameter you'll need is sigma. Simply
+    set the mean to 0.
+    
     Args:
-        R (np.ndarray): the radial map, which is a meshgrid
-        sigma (float): the blur radius
-    Returns:
-        psf_gauss (np.ndarray): the PSF
+        R: radial distance map
+        sigma: standard deviation of the gaussian PSF
+    Return:
+        PSF (float): A 2D-array with the gaussian PSF
     """
     raise NotImplementedError
 
 
-    
 
 def calc_angle_of_view(sensor_size_mm,focal_length):
     """
-    TODO: IMPLEMENT ME
-
     Calcualte Angle of View
     
     According to: https://shuttermuse.com/calculate-field-of-view-camera-lens/
@@ -52,10 +62,9 @@ def calc_angle_of_view(sensor_size_mm,focal_length):
     """
     raise NotImplementedError
 
+
 def calc_field_of_view(sensor_size_mm,o_obj,focal_length):
     """
-    TODO: IMPLEMENT ME
-
     Calcualte linear field of view at specific distance away from the lens
     
     You have to transform the equation given in https://en.wikipedia.org/wiki/Magnification#Photography
@@ -70,28 +79,26 @@ def calc_field_of_view(sensor_size_mm,o_obj,focal_length):
     raise NotImplementedError
 
 
+def calc_magnification():
+    raise NotImplementedError
+
 def calc_blur_radius(f,D,o_foc,o_obj):
     """
-
-    TODO: IMPLEMENT ME
-
     Calcualte the blur radius according to
     lecture 1 - image formation
 
     Args:
-        f (float): the focal length
-        D (float): apeture diameter
-        o_foc (float): focus distance 
-        o_obj  (float)= distance of object
+        sensor_size_mm (float): sensor size of camera
+        o_obj (float): distance where object is located
+        focal_length (float): focal length of objetive lens
     Returns:
-        blur_radius (float): blur radius
+        angle of view of specific camera
     """
     raise NotImplementedError
 
+
 def crop_background_image_sensor_ratio(sensor_size_mm,img):
     """"
-
-    TODO: IMPLEMENT ME
     
     This functions crops an image of arbitrary to size to a specific aspect ratio defined 
     by the sensor size of the camera
@@ -100,25 +107,35 @@ def crop_background_image_sensor_ratio(sensor_size_mm,img):
     https://stackoverflow.com/questions/273946/how-do-i-resize-an-image-using-pil-and-maintain-its-aspect-ratio/273962
     
     Input:
-        sensor_size (float) : array containing the height and width of the image sensor which defines the aspect ratio
-        img (int,float) : the image that should be cropped to the specific aspect ratio
+    sensor_size (float) : array containing the height and width of the image sensor which defines the aspect ratio
+    img (int,float) : the image that should be cropped to the specific aspect ratio
     Output:
-        resized_img (int,loat): The cropped image that now has the correct aspect ratio
+    resized_img (int,loat): The cropped image that now has the correct aspect ratio
     """
 
     raise NotImplementedError
+
 
 def convolve_image(img,PSF):
     """
-
-    TODO: IMPLEMENT ME
-    this applies a convolution utilizing the guassian psf on the image
-
-    Args:
-        img (np.ndarray): the image to apply the PSF on
-        PSF (np.ndarray): the PSF
-    Returns:
-        filtered_img (np.ndarray): the blurred image after the PSF has been applied.
+    
+    Convolve_image blurs the image with a PSF. Because we've defined very large blur 
+    kernels (100x100 instead of small ones like 5x5) these Convolutions can take
+    very long, especially when performed in spatial domain.
+    
+    The trick is to perform this convolution in frequency domain using the
+    convolution theorem: https://en.wikipedia.org/wiki/Convolution_theorem
+    
+    Luckily, there are already python package which perform convolution
+    in the frequency domain. 
+    
+    You can look e.g. at scipy.signal.fftconvolve for such a method that you
+    can use in this functon.
+    
+    Input:
+    img (float) : RGB array of the image to be blurred
+    psf (float) : the point spread function we are blurring the image with
+    Output:
+    img_filtered (foat): The filtered image of same size as img
     """
     raise NotImplementedError
-
