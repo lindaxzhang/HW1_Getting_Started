@@ -5,20 +5,27 @@ import skimage.transform
 import cv2
 import matplotlib.pyplot as plt
 
+savedir = '//output//'
+
+
 def save_fig_as_png(figtitle):
     '''
-    Saves the current figure into the output folder
-    The figtitle should not contain the ".png".
-    This helper function shoudl be easy to use and should help you create the figures 
-    needed for the report
     
-    The directory where images are saved are taken from savedir in "Code.py" 
-    and should be included in this function.
+    Saves the current figure into the output folder specificed by the variable "savedir".
+    Note: depending on the OS you might change the backslashes / to \.
+   
+    The figtitle should not contain the ".png".
+    
+    This helper function should be easy to use and should help you create/save the figures 
+    needed for the report.
     
     Hint: The plt.gcf() might come in handy
     Hint 2: read about this to crop white borders
-    https://stackoverflow.com/questions/8218608/scipy-savefig-without-frames-axes-only-content
+    https://stackoverflow.com/questions/8218608/scipy-savefig-without-frames-axes-only-content  
     
+    Args:
+        figtile: filename without the ending ".png"
+        
     '''
 
     raise NotImplementedError
@@ -133,6 +140,12 @@ def rescale(img,scale):
     
     Implement a function that scales an image according to the scale factor
     defined by scale
+    
+    If you're using the rescale function from scikit-learn make sure
+    that it is not rescaling the 3rd dimension. 
+    
+    Look at the output of the image and see if looks like expected,
+    if not, come up with a solution that solves this problem.
 
     """    
     raise NotImplementedError
@@ -169,22 +182,48 @@ def add_alpha_channel(img):
 
 
 def overlay_two_images_of_same_size(img1,img2):
+    """
+    TODO: IMPLEMENT ME
+
+    This is a helper function that can be used to implement
+    the function "overlay_two_images"
+    
+    This function takes 2 image of the same input size
+    and adds them together via simple superposition.
+    
+    WARNING: You have to account for the alpha-channel of img2
+    to correct for nice superposition of both images
+    
+    Args:
+        img1 (nd.array): The image of the background
+        img2 (nd.array): The image to be overlayed (e.g. the dog) that has the shape of img1. Img2 should have an alpha channel that has non-zero entries
+        location (nd.array): x,y coordinates of the top-left of the image you want to overlay
+    Returns:
+        output (np.ndarray): An image of the same size   
+    """
+    
     raise NotImplementedError
     
 def overlay_two_images(img1,img2,location):
     """
     TODO: IMPLEMENT ME
+
+    Overlays a background image (img1) with a forgeground image (img1)
+    Location defines the tope-left location where img2 is placed ontop of
+    the background image1
     
-    Crop a region-of-interest (ROI) from the big northwestern image that shows only Chicago
+    NOTE: img2 can be a large image and its boundaries could go over
+    the image boundaries of the background img1.
     
-    The image size should be (250, 1000) and the the output should be an RGB numpy array
+    You'll have to crop img2 accordingly to fit into img1 and to avoid
+    any numpy errors (out-of-bound errors)
     
     Args:
-        img1 (nd.array): 
-        img2 (nd.array):
+        img1 (nd.array): The image of the background
+        img2 (nd.array): The image to be overlayed (e.g. the dog)
         location (nd.array): x,y coordinates of the top-left of the image you want to overlay
     Returns:
-        output (np.ndarray): The skyline of chicago with size (250,1000,3)
+        output (np.ndarray): An image of size img1.shape that is overlayed with img2
     """    
     
     raise NotImplementedError

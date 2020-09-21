@@ -52,6 +52,7 @@ def indexing_aggregation(x, n):
 
     Args:
         x (np.ndarray): a 1D numpy array
+        n (np.ndarray): The first n-elements of the input array x
     Returns:
         output (float): the operation result
 
@@ -74,4 +75,3 @@ def matrix_inverse(A):
     """
     
     raise NotImplementedError    
-    #raise NotImplementedError()
