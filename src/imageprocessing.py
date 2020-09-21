@@ -82,7 +82,7 @@ def downsample_by_scale_factor(img,scale_factor):
     Args:
         input (nd.array): The image of Northwestern and Chicago
     Returns:
-        output (np.ndarray): The skyline of chicago with size (250,1000,3)
+        output (np.ndarray): The third dimension shouldn't change, only the first 2 dimensions.
     """
     
     raise NotImplementedError
@@ -194,6 +194,8 @@ def overlay_two_images_of_same_size(img1,img2):
     WARNING: You have to account for the alpha-channel of img2
     to correct for nice superposition of both images
     
+    Hint: https://en.wikipedia.org/wiki/Alpha_compositing
+    
     Args:
         img1 (nd.array): The image of the background
         img2 (nd.array): The image to be overlayed (e.g. the dog) that has the shape of img1. Img2 should have an alpha channel that has non-zero entries
@@ -217,6 +219,8 @@ def overlay_two_images(img1,img2,location):
     
     You'll have to crop img2 accordingly to fit into img1 and to avoid
     any numpy errors (out-of-bound errors)
+    
+    Hint: https://en.wikipedia.org/wiki/Alpha_compositing
     
     Args:
         img1 (nd.array): The image of the background

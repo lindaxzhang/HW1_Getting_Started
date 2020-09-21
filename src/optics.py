@@ -79,9 +79,6 @@ def calc_field_of_view(sensor_size_mm,o_obj,focal_length):
     raise NotImplementedError
 
 
-def calc_magnification():
-    raise NotImplementedError
-
 def calc_blur_radius(f,D,o_foc,o_obj):
     """
     Calcualte the blur radius according to
