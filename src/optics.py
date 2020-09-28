@@ -101,8 +101,14 @@ def crop_background_image_sensor_ratio(sensor_size_mm,img):
     This functions crops an image of arbitrary to size to a specific aspect ratio defined 
     by the sensor size of the camera
     
-    This might come in handy    
-    https://stackoverflow.com/questions/273946/how-do-i-resize-an-image-using-pil-and-maintain-its-aspect-ratio/273962
+    1. Calculate aspect ratio of sensor: e.g., 24/36 = 2/3
+    2. Calculate aspect ratio r of input image:
+        Two cases: r > 2/3 or r<2/3
+    Depending on those cases, you have to crop either width or height (think about which one)
+    3. Depending on result of (2), calculate how much you have to crop
+    4. Crop only either width or height dimension, depending on what you've calculated in 3
+    5. You're done. I would use only numpy for this. Nothing else is needed
+
     
     Input:
     sensor_size (float) : array containing the height and width of the image sensor which defines the aspect ratio
