@@ -66,6 +66,7 @@ def calc_angular_field_of_view(sensor_size_mm,focal_length):
 def calc_field_of_view(sensor_size_mm,o_obj,focal_length):
     """
     Calculate linear field of view at specific distance away from the lens
+   
     
     You have to transform the equation given in https://en.wikipedia.org/wiki/Magnification#Photography
 
@@ -74,7 +75,7 @@ def calc_field_of_view(sensor_size_mm,o_obj,focal_length):
         o_obj (float): distance where object is located
         focal_length (float): focal length of objetive lens
     Returns:
-        angle of view of specific camera for both dimensions
+        linear of view of specific camera for both dimensions in mm
     """
     raise NotImplementedError
 
